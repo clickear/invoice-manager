@@ -76,7 +76,7 @@ WSGI_APPLICATION = 'invoice_manager.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': '/data/invoice/db.sqlite3',
     }
 }
 
@@ -116,5 +116,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-IMPORT_PATH = Path("./import")
-INVOICES_PATH = Path("./invoices")
+IMPORT_PATH = Path("/data/invoice/import")
+INVOICES_PATH = Path("/data/invoice/invoices")

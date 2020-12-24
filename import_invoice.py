@@ -12,9 +12,11 @@ from datetime import datetime
 from huaweicloud_ocr_sdk.HWOcrClientToken import HWOcrClientToken
 from invoice_manager.settings import IMPORT_PATH, INVOICES_PATH
 
-username = "xxx"
-password = "xxx"
-domain_name = "xxx"  # If the current user is not an IAM user, the domain_name is the same as the username.
+
+
+username = "fgh15975300"
+password = "858833crc"
+domain_name = "fgh15975300"  # If the current user is not an IAM user, the domain_name is the same as the username.
 region = "cn-north-4"  # cn-north-1,cn-east-2 etc.
 req_uri = "/v1.0/ocr/vat-invoice"
 ocrClient = HWOcrClientToken(domain_name, username, password, region)
@@ -26,6 +28,8 @@ def ocr(invoice_path):
         img = Image(blob=invoice_path.read_bytes(), resolution=300)
         img.format = 'png'
         img.background_color = Color("white")
+        img.alpha_channel = 'remove'
+
         img_bytes = img.make_blob()
 
         response = ocrClient.request_ocr_service_base64(req_uri, img_bytes, option)
@@ -51,7 +55,7 @@ def run():
             )
 
             # 判断抬头和税号是否正确
-            if invoice.company_id != "XXX" or invoice.company_name != "XXX":
+            if invoice.company_id != "91350212MA34NYU13R" or invoice.company_name != "厦门万里目成长科技有限公司":
                 print(f"{invoice_path.name} 税号或税号与配置中的不符，已跳过")
                 continue
 
