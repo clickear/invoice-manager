@@ -22,9 +22,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'dma=3iy8%mys6puq-1od(x(%u5424ak!0n28*x!vfdi1swp*0$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['invoice.clickear.top']
 
 # Application definition
 
