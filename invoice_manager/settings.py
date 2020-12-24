@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -22,9 +22,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'dma=3iy8%mys6puq-1od(x(%u5424ak!0n28*x!vfdi1swp*0$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['invoice.clickear.top']
+ALLOWED_HOSTS = ['*',]
 
 # Application definition
 
@@ -115,6 +115,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+
+# 指定simpleui 是否以脱机模式加载静态资源，为True的时候将默认从本地读取所有资源，即使没有联网一样可以。适合内网项目
+# 不填该项或者为False的时候，默认从第三方的cdn获取
+
+SIMPLEUI_STATIC_OFFLINE = False
 
 IMPORT_PATH = Path("/data/invoice/import")
 INVOICES_PATH = Path("/data/invoice/invoices")

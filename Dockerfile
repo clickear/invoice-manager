@@ -7,6 +7,6 @@ RUN apt-get update
 RUN apt install -y ghostscript
 ENV        SHELL=/bin/bash
 #ENTRYPOINT ["pipenv", "run"]
-#CMD        ["python",  "manage.py", "runserver"]
+#CMD        ["python",  "manage.py collectstatic"]
 #CMD ["python", "manage.py", "runserver", "0.0.0.0", "8000"]
 ENTRYPOINT ["python", "manage.py", "runserver",  "0.0.0.0:8000"]
