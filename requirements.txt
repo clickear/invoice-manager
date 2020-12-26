@@ -1,3 +1,4 @@
+apscheduler
 beautifulsoup4
 imbox
 Django~=3.1.3
