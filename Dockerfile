@@ -9,5 +9,6 @@ ENV        SHELL=/bin/bash
 #ENTRYPOINT ["pipenv", "run"]
 #CMD        ["python",  "manage.py collectstatic"]
 #CMD ["python", "manage.py", "runserver", "0.0.0.0", "8000"]
+RUN chmod +x /app/entrypoint.sh
 ENTRYPOINT ["/app/entrypoint.sh"]
 #ENTRYPOINT ["python", "manage.py", "runserver",  "0.0.0.0:8000"]
