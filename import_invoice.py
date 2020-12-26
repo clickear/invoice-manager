@@ -9,4 +9,4 @@ from invoice_manager.vat_invoice import invoice
 from invoice_manager.job import invoice_from_email_job
 
 if __name__ == '__main__':
-    invoice_from_email_job()
+    invoice()

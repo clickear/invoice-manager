@@ -16,11 +16,11 @@ ocrClient = HWOcrClientToken(domain_name, username, password, region)
 def ocr(invoice_path):
     option = {}
     try:
-        img = Image(blob=invoice_path.read_bytes(), resolution=300)
+        img = Image(blob=invoice_path.read_bytes(), resolution=500)
         img.format = 'png'
         img.background_color = Color("white")
         img.alpha_channel = 'remove'
-
+        img.compression_quality = 88
         img.save(filename='/data/invoice/invoices/test.png')
 
         img_bytes = img.make_blob()
