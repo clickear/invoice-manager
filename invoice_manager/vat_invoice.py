@@ -21,6 +21,8 @@ def ocr(invoice_path):
         img.background_color = Color("white")
         img.alpha_channel = 'remove'
 
+        img.save(filename='/data/invoice/invoices/test.png')
+
         img_bytes = img.make_blob()
 
         response = ocrClient.request_ocr_service_base64(req_uri, img_bytes, option)
