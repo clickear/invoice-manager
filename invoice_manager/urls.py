@@ -15,8 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls import url
+from werobot.contrib.django import make_view
+from wechat.robot import robot
 
 urlpatterns = [
+
     path("manager/", include("manager.urls")),
     path('admin/', admin.site.urls),
+    url(r'^robot/',make_view(robot)),
 ]

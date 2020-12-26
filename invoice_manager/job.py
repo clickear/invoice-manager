@@ -42,6 +42,7 @@ def invoice_from_email_job():
     if downloaded:
         invoice()
 
+    return len(unread_messages)
 
 def getHtmlFromEmailMessage(message):
     if message.body and message.body['html'] and len(message.body['html']) > 0:
