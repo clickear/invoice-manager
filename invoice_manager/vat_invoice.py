@@ -41,10 +41,10 @@ def invoice():
                 invoice = Invoice(
                     id=invoice_data["number"],
                     description="、".join([item["name"] for item in invoice_data["item_list"]]),
-                    create_date=datetime.strptime(invoice_data["issue_date"], "%Y年%m月%d日"),
+                    create_date=get_crate_date(invoice_data["issue_date"]),
                     company_name=invoice_data["buyer_name"],
                     company_id=invoice_data["buyer_id"],
-                    price=float(invoice_data["total"].replace("￥", "")),
+                    price=get_price(invoice_data["total"]),
                 )
 
                 # 判断抬头和税号是否正确
@@ -53,3 +53,17 @@ def invoice():
                     continue
                 invoice_path.rename(INVOICES_PATH / f"{invoice.id}.pdf")
                 invoice.save()
+
+
+def get_crate_date(date_str):
+    try:
+        return datetime.strptime(date_str, "%Y年%m月%d日")
+    except Exception:
+        return datetime.now()
+
+
+def get_price(total_str):
+    try:
+        return float(total_str.replace("￥", ""))
+    except Exception:
+        return 0.0
