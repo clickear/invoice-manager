@@ -124,3 +124,8 @@ SIMPLEUI_STATIC_OFFLINE = False
 
 IMPORT_PATH = Path("/data/invoice/import")
 INVOICES_PATH = Path("/data/invoice/invoices")
+
+
+IMBOX_HOST = 'imap.qq.com'
+IMBOX_USERNAME = '434647670@qq.com'
+IMBOX_PWD = 'rwaziekgqiypbjfg'

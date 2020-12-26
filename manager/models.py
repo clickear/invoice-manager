@@ -32,3 +32,9 @@ class Invoice(models.Model):
         choices=categories,
         default=type_not_selected
     )
+
+
+class Email(models.Model):
+    id = models.CharField(verbose_name="ID", primary_key=True, max_length=64)
+    subject = models.CharField(verbose_name="主体", max_length=100)
+    content = models.TextField(verbose_name="内容")

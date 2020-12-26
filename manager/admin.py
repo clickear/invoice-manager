@@ -4,6 +4,7 @@ from django.contrib import admin
 from django.shortcuts import render
 
 from .models import Invoice
+from invoice_manager.job import invoice_from_email_job
 
 
 def make_actions():
@@ -36,11 +37,17 @@ def use_invoices(modeladmin, request, queryset):
     return render(request, "use_invoices.html", {"invoice_ids": ','.join(invoice_ids)})
 
 
+def import_data(modeladmin, request, queryset):
+    invoice_from_email_job()
+    import_data.short_description = '解析数据'
+    return
+
+
 class InvoiceAdmin(admin.ModelAdmin):
     list_display = ("id", "description", "create_date", "company_name", "company_id", "price", "used", "category")
     list_filter = ["company_name", "company_id", "category", "used"]
     search_fields = ["id", "description"]
-    actions = [use_invoices] + make_actions()
+    actions = [import_data, use_invoices] + make_actions()
 
     use_invoices.short_description = "使用这些发票"
 

@@ -7,6 +7,13 @@ from django.http import HttpResponse
 from invoice_manager.settings import INVOICES_PATH
 from .models import Invoice
 
+from apscheduler.schedulers.background import BackgroundScheduler
+
+from invoice_manager.job import invoice_from_email_job
+
+scheduler = BackgroundScheduler()
+scheduler.add_job(invoice_from_email_job, 'interval', hours=12)
+scheduler.start()
 
 def merge_invoices(request):
     pdf_bytes = BytesIO()
